@@ -2,8 +2,10 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 class TaskController {
+  
+
   constructor() {
-    this.taskUrl = "http://localhost:3100/api";
+    this.taskUrl = "https://taskmanagerbackend-jhbt.onrender.com/api";
 
     this.axiosInstance = axios.create({
       baseURL: this.taskUrl,
@@ -20,6 +22,13 @@ class TaskController {
       );
       return response.data;
     } catch (error) {
+      if(error.status === 500){
+        return Swal.fire({
+           icon: "error",
+           title: "Error al crear la tarea",
+           text: "Hubo un Problema con el servidor"
+         });
+       }
       return error.response.data.errors;
     }
   }
@@ -37,12 +46,19 @@ class TaskController {
       });
       return response.data;
     } catch (error) {
+      if(error.status === 500){
+       return Swal.fire({
+          icon: "error",
+          title: "Error al crear la tarea",
+          text: "Hubo un Problema con el servidor"
+        });
+      }
       if (titulo.trim() === "") {
         return Swal.fire({
           icon: "error",
           title: "Error al crear la tarea",
-          html: error.response.data.errors
-            .map((err) => `<p> - ${err.msg}</p>`)
+          html: error.response?.data.errors
+            ?.map((err) => `<p> - ${err.msg}</p>`)
             .join(""),
         });
       }
@@ -50,7 +66,7 @@ class TaskController {
         Swal.fire({
           icon: "error",
           title: "Error al crear la tarea",
-          html: error.response.data.errors
+          html: error.response?.data.errors
             .map((err) => `<p> - ${err.msg}</p>`)
             .join(""),
         });
@@ -77,16 +93,23 @@ class TaskController {
         return Swal.fire({
           icon: "error",
           title: "Error al actualizar la tarea",
-          html: error.response.data.errors
+          html: error.response?.data.errors
             .map((err) => `<p> - ${err.msg}</p>`)
             .join(""),
         });
       }
+      if(error.status === 500){
+        return Swal.fire({
+           icon: "error",
+           title: "Error al crear la tarea",
+           text: "Hubo un Problema con el servidor"
+         });
+       }
       if (error.response) {
         return Swal.fire({
           icon: "error",
           title: "Error al actualizar la tarea",
-          html: error.response.data.errors
+          html: error.response?.data.errors
             .map((err) => `<p> - ${err.msg}</p>`)
             .join(""),
         });
@@ -110,11 +133,18 @@ class TaskController {
         Swal.fire({
           icon: "error",
           title: "Error al crear la tarea",
-          html: error.response.data.errors
+          html: error.response?.data.errors
             .map((err) => `<p> - ${err.msg}</p>`)
             .join(""),
         });
       }
+      if(error.status === 500){
+        return Swal.fire({
+           icon: "error",
+           title: "Error al crear la tarea",
+           text: "Hubo un Problema con el servidor"
+         });
+       }
       return error.response.data.errors;
     }
   }

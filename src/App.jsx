@@ -7,7 +7,7 @@ import store from "./store/store";
 function App() {
   return (
     <Provider store={store}>
-      <div className="mx-auto pt-5 max-sm:pt-0">
+      <div class="mx-auto pt-5 max-sm:pt-0">
         <TaskScreen />
       </div>
     </Provider>

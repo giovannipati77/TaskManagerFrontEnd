@@ -23,7 +23,7 @@ export const ListTask = ({ tasks, onEdit }) => {
   const deleteTasks = async (id) => {
     const deleteResponse = new TaskController();
     const response = await deleteResponse.deleteTask(id);
-    dispatch(setRefresh(!refresh));
+    if (response) dispatch(setRefresh(!refresh));
   };
 
   return (

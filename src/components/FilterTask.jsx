@@ -12,12 +12,12 @@ export const FilterTask = ({ onFilterChange }) => {
   };
 
   return (
-    <div className="w-full h-full flex">
+    <div class="w-full h-full flex">
       <select
         id="filter"
         value={selectedFilter}
         onChange={handleChange}
-        className="w-full h-full rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent px-2 shadow-lg">
+        class="w-full h-full rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent px-2 shadow-lg">
         <option value="all">Todas</option>
         <option value="complete">Completadas</option>
         <option value="pending">Pendientes</option>
