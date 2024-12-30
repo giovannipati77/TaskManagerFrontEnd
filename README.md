@@ -1,4 +1,4 @@
-# FrontEnd Task Manger
+# FrontEnd Task Manager
 Url: https://tasksmanager77.netlify.app
 
 ### `npm start`
